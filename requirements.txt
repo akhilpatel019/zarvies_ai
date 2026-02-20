@@ -1,5 +1,4 @@
 flask
-pywhatkit
 wikipedia
 requests
 gunicorn

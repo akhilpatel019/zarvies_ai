@@ -1,5 +1,4 @@
 import datetime
-import pywhatkit
 import wikipedia
 import random
 import urllib.parse
@@ -232,8 +231,13 @@ def execute_command(command):
     # 4 PLAY
     if "play" in words:
         song = command.replace("play","").strip()
-        pywhatkit.playonyt(song)
-        return f"Playing {song} on YouTube"
+        if song:
+            query = urllib.parse.quote(song)
+            return {
+                "type": "url",
+                "url": f"https://www.youtube.com/results?search_query={query}",
+                "reply": f"Opening YouTube results for {song}"
+            }
 
 
     # 5 ROUTED HANDLERS
